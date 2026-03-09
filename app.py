@@ -51,7 +51,8 @@ def get_qdrant_client():
 
 def assure_db_collection_exists():
     qdrant_client = get_qdrant_client()
-    if not qdrant_client.collection_exists(QDRANT_COLLECTION_NAME):
+    existing_collections = [c.name for c in qdrant_client.get_collections().collections]
+    if QDRANT_COLLECTION_NAME not in existing_collections:
         qdrant_client.create_collection(
             collection_name=QDRANT_COLLECTION_NAME,
             vectors_config=VectorParams(

@@ -131,8 +131,6 @@ for key in ["note_audio_bytes_md5", "note_audio_bytes", "note_text", "note_audio
 
 # 8. UI LAYOUT
 st.title("Audio Notes")
-st.write("URL:", st.secrets.get("qdrant_url"))
-st.stop()
 assure_db_collection_exists()
 
 add_tab, search_tab = st.tabs(["Add note", "Search notes"])

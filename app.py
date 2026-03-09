@@ -98,11 +98,11 @@ def list_notes_from_db(query=None):
         )[0]
         return [{"text": n.payload["text"], "score": None} for n in notes]
     else:
-        notes = qdrant_client.search(
+        notes = qdrant_client.query_points(
             collection_name=QDRANT_COLLECTION_NAME,
-            query_vector=get_embedding(text=query),
+            query=get_embedding(text=query),
             limit=10,
-        )
+        ).points
         return [{"text": n.payload["text"], "score": n.score} for n in notes]
 
 

@@ -48,3 +48,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Aditional files
+audio_notes_v6.py
+Specyfikacja Specs.md
